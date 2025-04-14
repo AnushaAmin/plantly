@@ -1,11 +1,11 @@
 {
   "expo": {
-    "name": "plantly",
+    "name": "Plantly",
     "slug": "plantly",
+    "scheme": "plantly",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "myapp",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
@@ -15,7 +15,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.anusha_amin.plantly"
     },
     "web": {
       "bundler": "metro",
@@ -36,6 +37,15 @@
     ],
     "experiments": {
       "typedRoutes": true
-    }
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "1d1c037f-0da4-4904-9b87-3920f42d451d"
+      }
+    },
+    "owner": "anusha_amin"
   }
 }

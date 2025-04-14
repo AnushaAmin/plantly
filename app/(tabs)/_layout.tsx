@@ -1,45 +1,38 @@
-import { Tabs } from 'expo-router';
-import React from 'react';
-import { Platform } from 'react-native';
+import { Link, Redirect, Tabs} from "expo-router";
+import Entypo from '@expo/vector-icons/Entypo';
+import Feather from '@expo/vector-icons/Feather';
+import { theme } from "@/theme";
+import { useUserStore } from "@/store/userStore";
+import AntDesign from "@expo/vector-icons/AntDesign";
+import { Pressable } from "react-native";
 
-import { HapticTab } from '@/components/HapticTab';
-import { IconSymbol } from '@/components/ui/IconSymbol';
-import TabBarBackground from '@/components/ui/TabBarBackground';
-import { Colors } from '@/constants/Colors';
-import { useColorScheme } from '@/hooks/useColorScheme';
 
-export default function TabLayout() {
-  const colorScheme = useColorScheme();
-
-  return (
-    <Tabs
-      screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-        headerShown: false,
-        tabBarButton: HapticTab,
-        tabBarBackground: TabBarBackground,
-        tabBarStyle: Platform.select({
-          ios: {
-            // Use a transparent background on iOS to show the blur effect
-            position: 'absolute',
-          },
-          default: {},
-        }),
-      }}>
-      <Tabs.Screen
-        name="index"
-        options={{
-          title: 'Home',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
-        }}
-      />
-      <Tabs.Screen
-        name="explore"
-        options={{
-          title: 'Explore',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="paperplane.fill" color={color} />,
-        }}
-      />
+export default function Layout(){
+  const hasFinishedOnBoarding = useUserStore(state => state.hasFinishedOnboarding);
+    if (!hasFinishedOnBoarding){
+        return <Redirect href="/onboarding" /> 
+    }
+return(
+    <Tabs screenOptions={{tabBarActiveTintColor: theme.colorGreen}}>
+        <Tabs.Screen name="(home)" options={{
+            title:"Home",
+            tabBarShowLabel:false,
+            tabBarIcon: ({size, color}) => (<Entypo name="leaf" size={size} color={color} /> ),
+            headerRight: () => (
+                <Link href="/new" asChild>
+                <Pressable style={{marginRight:18}} hitSlop={20}>
+                <AntDesign name="pluscircleo" size={24} color={theme.colorGreen}/>
+                </Pressable>
+                </Link>
+            )
+        }
+        }/>
+        <Tabs.Screen name="profile" options={{
+            title:"Profile",
+            tabBarShowLabel:false,
+            tabBarIcon: ({size, color}) => <Feather name="user" size={size} color={color} />
+        }
+        }/>
     </Tabs>
-  );
+)
 }
