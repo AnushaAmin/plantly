@@ -44,7 +44,7 @@
       ],
       "expo-quick-actions",
       {
-        "adaptiveIcons": {
+        "adaptiveIcon": {
           "leaf": {
             "foregroundImage":"./assets/images/leaf.png",
             "backgroundColor":"#ffffff"
