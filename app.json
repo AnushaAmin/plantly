@@ -45,7 +45,7 @@
       [
       "expo-quick-actions",
       {
-        "adaptiveIcon": {
+        "androidIcons": {
           "leaf": {
             "foregroundImage":"./assets/images/leaf.png",
             "backgroundColor":"#ffffff"
