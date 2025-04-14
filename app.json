@@ -42,6 +42,7 @@
           ]
         }
       ],
+      [
       "expo-quick-actions",
       {
         "adaptiveIcon": {
@@ -50,7 +51,7 @@
             "backgroundColor":"#ffffff"
           }
         }
-      }
+      } ]
     ],
     "experiments": {
       "typedRoutes": true
